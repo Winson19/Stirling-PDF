@@ -49,15 +49,15 @@ jobs:
       - name: Upload Build Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifacts
+          name: build-artifacts-${{ github.run_number }} # Unique artifact name using run number
           path: build/reports/**
 
       - name: Upload Test Reports
         uses: actions/upload-artifact@v4
         with:
-          name: test-reports
-          path: build/test-results/test/  # Adjust the path based on where your test reports are located
-
+          name: test-reports-${{ github.run_number }} # Unique artifact name using run number
+          path: build/test-results/test/
+          
   docker-compose-tests:
     # if: github.event_name == 'push' && github.ref == 'refs/heads/main' ||
     #     (github.event_name == 'pull_request' &&
