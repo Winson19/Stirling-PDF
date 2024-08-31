@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Checkout'){
+            steps {
+                git branch: 'main', url: 'https://github.com/Winson19/Stirling-PDF.git'
+            }
+        }
         stage('Build') {
             steps {
 				sh 'chmod 755 gradlew'
